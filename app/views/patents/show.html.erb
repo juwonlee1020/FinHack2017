@@ -1,0 +1,62 @@
+<div class="container-fluid" style="height:40em; background-color:#8d9db6; color:white;">
+	<div class="col-sm-8 col-sm-offset-2">
+		<div class="row" >
+		<br>
+		<h1 style="color:black; text-align:center;font-size:2em;">Title: <%= @patent.title %></h1>
+		<br>
+		</div>
+		<div class="row">
+		<div class="col-sm-6">
+			<br><br>
+			<div style="width:17em; height:17em; background-color:#cfe0e8;text-align:center;"><br><h1 style="font-size:10em;color:black;">E</h1></div>
+		</div>
+		<div class="col-sm-6" style="padding-top:0">
+		<h4><%= @patent.country %></h4>
+		<h4><%= @patent.kind %></h4>
+		<h4><%= @patent.category %></h4>
+		<h4><%= @patent.created_at %></h4>
+		<div class="keyword_show">
+		<h4>Keywords:</h4>
+		<% @patent.keywords.each do |k| %>
+			<h4>
+				<%= k.kw %>
+			</h4>
+		<% end %>
+		<div class="keyword_form">
+		<%= simple_form_for [@patent, @patent.keywords.build] do |f| %>
+			<%= f.input :kw, label:false %>
+			<%= f.button :submit %>
+		<% end %>
+		<div id="add_more">Add more</div>
+		</div>
+		</div>
+		</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid" style="background-color:gainsboro;">
+	<div class="col-sm-10 col-sm-offset-1" style="background-color: white;">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+		<br><br>
+		<div style="background-color:#f1e3dd "><h3 class="nope" style="padding-top:15px; color:white; padding-bottom:15px; padding-right:10px; padding-left:10px;"><%= link_to "Quick Start", edit_patent_path %></h3></div>
+		<hr>
+		<h4>Down below, we've created a simple timeline for you to follow! Make sure you go through each and every step thoroughly, making full use of the tools provided here at Intelligent Patents. If you think you're ready to start, press on the quick start button above!</h4>
+		</div>
+	</div>
+	<div class="row">
+	<%= render 'timeline' %>
+	</div>
+	</div>
+</div>
+	
+
+
+
+<script>
+	$("#add_more").click(function(){
+		$(".keyword_show").append($(".keyword_form"));
+	})
+
+
+</script>

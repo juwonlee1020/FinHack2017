@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kw: MyString
+  patent: one
+
+two:
+  kw: MyString
+  patent: two

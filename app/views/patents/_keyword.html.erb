@@ -1,0 +1,79 @@
+
+<div class="container-fluid" style="height:40em; background-color:#6D929B; color:white;">
+	<div class="col-sm-6 col-sm-offset-3">
+		<div class="row">
+			<div style="margin-top:8em;">
+			<h2>Keywords for <%= @patent.title %> :</h2>
+			
+			<% @patent.keywords.each do |k| %>
+			<h4 class="kw_li">
+				 <%= k.kw %>  
+			</h4>
+			<% end %>
+
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<h5>Our quick keyword search provides you search results from the official United States Patent and Trademark Office (USPTO) database. Abstracts containing the given keywords will be listed below with their corresponding links to detailed claims.</h5>
+		</div>
+		<hr><br>
+		<div class="row">
+			<div style="background-color:#f1e3dd;height:60px; padding:0.6em;color:black;" onclick= "sendRequest(event)"><h3>Perform Keyword Search</h3></div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid" style="background-color:gainsboro;">
+<div class="col-sm-10 col-sm-offset-1" style="background-color:white;">
+  <div class="row">
+    <table class="table">
+    	<thead>
+    		<tr>
+    			<th style="text-align:center;">Patent ID</th>
+    			<th style="text-align:center;">Patent Title</th>
+    			<th style="text-align:center;">Abstract URL</th>
+    		</tr>
+    	</thead>
+    	<tbody id="table_body">
+    		<tr class="table_row_0">
+    		</tr>
+    	</tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+
+<script>
+   function sendRequest(e){
+   		e.preventDefault();
+   		var first_kw = $("#first_kw").val();
+   		var second_kw = $("#second_kw").val();
+   		//var third_kw = "watch";//$('#third_kw').val();	
+
+    	
+            $.ajax({
+  				method: "GET",
+  				url:'http://www.patentsview.org/api/patents/query?q={%22_and%22:[{%22_text_any%22:{%22patent_title%22:%22' + first_kw + "%22}},{%22_text_any%22:{%22patent_title%22:%22"+second_kw+"%22}}]}",
+  				//url:'http://www.patentsview.org/api/patents/query?q={%22_and%22:[{%22_text_any%22:{%22patent_title%22:%22' + first_kw + "%22}},{%22_text_any%22:{%22patent_title%22:%22"+second_kw+"%22}},{%22_text_any%22:{%22patent_title%22:%22"+third_kw+"%22}}]}",
+  				//'http://www.patentsview.org/api/patents/query?q={%22_text_phrase%22:{%22patent_title%22:%22'+ "tennis" + '%22}}',
+ 		 data: {
+      		format:'json',
+      
+  		},
+	})
+  	.done(function( data ) {
+  		for (var j = 0; j < Object.keys(data.patents).length; j++){
+  			$("#table_body").append("<tr class=" + "'table_row_"+ j +"'" + "></tr>");
+  			console.log(data.patents[j].patent_id);
+  			var id = data.patents[j].patent_id;
+  			var title = data.patents[j].patent_title;
+  			$(".table_row_" + j).append("<td>"+ id + "</td>");
+  			$(".table_row_" + j).append("<td>"+ title + "</td>");
+  			$(".table_row_" + j).append("<td>" + id + "</td>");
+  			
+  		}
+    	
+  	});
+    }
+</script>

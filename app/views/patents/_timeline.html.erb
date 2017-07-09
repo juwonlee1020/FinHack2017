@@ -1,0 +1,61 @@
+<head>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+ <div class="timeline ">
+    <h2><%= @patent.created_at.strftime("%B #{@patent.created_at.day.ordinalize}, %Y") %></h2>
+    <ul class="timeline-items ">
+        <li class="is-hidden timeline-item">
+            <h4>1. Quick Prior Arts Search</h4>
+            <hr>
+            <p>Prior art is any evidence that your invention in already known. <br>An existing product is the most obvious form of prior art. This can lead many inventors to make a common mistake: just because they cannot find a product containing their invention for sale in any shops, they assume that their invention must be novel.</p>
+            <hr>
+            <time> July, 2017</time>
+        </li>
+    </ul>
+    <ul class="timeline-items">
+        <li class="is-hidden timeline-item inverted">
+            <h4>2. Fill in Questionnaire with <br>Your Personal Robot Attorney</h4>
+            <hr>
+            <p>Fill in the question forms with the help of your personal robot patent attorney! Try to be as detailed as possible, and always ask if you're not sure about something! </p>
+            <hr>
+            <time> August, 2017</time>
+        </li>
+    </ul>
+    <ul class="timeline-items">
+        <li class="is-hidden timeline-item">
+            <h4>3. Comprehensive Prior Arts Search with <br> Smart NLP Search Engine</h4>
+            <hr>
+            <p>With all of the information you've filled out in the form, we'll look thoroughly for any possible prior arts you might have missed from your quick keyword search. Read through the given list and feel free to go back to the form and make changes if necessary!</p>
+            <hr>
+            <time> August, 2017</time>
+        </li>
+        <li class="is-hidden timeline-item centered">
+            <h4>4. Download and Review the Document</h4>
+            <hr>
+            <p>Save your work and review it before you submit to your local patent office. Make sure you file the patent application before any publication! If you publish the invention, the invention is no longer novel. </p>
+            <hr>
+            <time>August, 2017</time>
+        </li>
+            
+    </ul>
+    <h2>August, 2018</h2>
+    <ul class="timeline-items">
+        <li class="is-hidden timeline-item inverted">
+            <h4>5. File application for Nonprovisional Patent!</h4>
+            <hr>
+            <p>After you file application for provisional patent, you have exactly one year to do more market research and find out if you really want to pursue your invention. During that one year, your invention will be labeled "patent pending" </p>
+            <hr>
+            <time> August, 2018</time>
+        </li>
+    </ul>
+
+    
+</div>
+
+</body>
+<script>
+$('.timeline').timelify()
+</script>
+    

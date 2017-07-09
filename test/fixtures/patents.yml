@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  country: MyString
+  kind: MyString
+  category: MyString
+  target_date: 2017-07-09
+  claims: MyText
+
+two:
+  title: MyString
+  country: MyString
+  kind: MyString
+  category: MyString
+  target_date: 2017-07-09
+  claims: MyText
